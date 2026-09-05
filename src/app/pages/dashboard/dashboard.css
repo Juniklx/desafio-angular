@@ -1,3 +1,12 @@
+/* =============== Cartão (usado nas seções do dashboard) =============== */
+.cartao {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+  padding: var(--space-5);
+}
+
 .dashboard-conteudo {
   flex: 1;
   width: 100%;
@@ -10,6 +19,27 @@
 }
 
 .dashboard-selecao { max-width: 320px; }
+
+/* =============== Cartões de métrica =============== */
+.metricas {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--space-4);
+}
+
+.metrica-rotulo {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  font-weight: 500;
+}
+
+.metrica-valor {
+  font-family: var(--font-mono);
+  font-size: var(--text-2xl);
+  font-weight: 600;
+  color: var(--color-text);
+  margin-top: var(--space-2);
+}
 
 .dashboard-vitrine {
   display: flex;
@@ -29,6 +59,69 @@
   margin-bottom: var(--space-4);
 }
 .campo-input--busca { max-width: 280px; }
+
+/* =============== Tabela de dados =============== */
+.tabela-wrapper {
+  overflow-x: auto;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+}
+
+table.tabela-frota {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+}
+
+.tabela-frota th,
+.tabela-frota td {
+  padding: var(--space-3) var(--space-4);
+  text-align: left;
+  white-space: nowrap;
+}
+
+.tabela-frota thead th {
+  font-family: var(--font-body);
+  font-weight: 600;
+  color: var(--color-text-muted);
+  background: var(--color-bg);
+  border-bottom: 1px solid var(--color-border);
+  font-size: var(--text-xs);
+}
+
+.tabela-frota tbody tr {
+  border-bottom: 1px solid var(--color-border);
+}
+
+.tabela-frota tbody tr:last-child {
+  border-bottom: none;
+}
+
+.tabela-frota tbody tr:hover {
+  background: var(--color-brand-soft);
+}
+
+.status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 2px 10px;
+  border-radius: var(--radius-pill);
+  font-family: var(--font-body);
+  font-size: var(--text-xs);
+  font-weight: 600;
+}
+
+.status-pill--online {
+  background: var(--color-success-soft);
+  color: var(--color-success);
+}
+
+.status-pill--offline {
+  background: var(--color-danger-soft);
+  color: var(--color-danger);
+}
 
 @media (max-width: 720px) {
   .dashboard-conteudo { padding: var(--space-4); }
