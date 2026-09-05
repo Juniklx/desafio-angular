@@ -1,0 +1,39 @@
+<input type="checkbox" id="menu-toggle" class="menu-toggle-input visually-hidden" aria-label="Abrir menu" />
+
+<aside class="sidebar">
+    <div class="sidebar-marca">
+        <img src="ford.png" alt="Ford" />
+        <span>Painel de Frota</span>
+    </div>
+    <nav class="sidebar-nav" aria-label="Navegação principal">
+        <a routerLink="/home" routerLinkActive ariaCurrentWhenActive="page" class="sidebar-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                stroke-linejoin="round">
+                <path d="M4 11.5 12 4l8 7.5" />
+                <path d="M6 10v9a1 1 0 0 0 1 1h3.5v-5h3v5H17a1 1 0 0 0 1-1v-9" />
+            </svg>
+            Home
+        </a>
+        <a routerLink="/dashboard" routerLinkActive ariaCurrentWhenActive="page" class="sidebar-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                stroke-linejoin="round">
+                <rect x="4" y="4" width="7" height="7" rx="1.5" />
+                <rect x="13" y="4" width="7" height="7" rx="1.5" />
+                <rect x="4" y="13" width="7" height="7" rx="1.5" />
+                <rect x="13" y="13" width="7" height="7" rx="1.5" />
+            </svg>
+            Dashboard
+        </a>
+    </nav>
+    <a (click)="sair()" class="sidebar-link sidebar-link--sair">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+            stroke-linejoin="round">
+            <path d="M9 4H6a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h3" />
+            <path d="M15 8l4 4-4 4" />
+            <path d="M19 12H9" />
+        </svg>
+        Sair
+    </a>
+</aside>
+
+<label for="menu-toggle" class="menu-overlay" aria-hidden="true"></label>
