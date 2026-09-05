@@ -1,11 +1,12 @@
 .home-hero {
   position: relative;
   flex: 1;
-  min-height: calc(100vh - var(--topbar-height));
+  max-height: 100vh;
   display: flex;
   align-items: flex-end;
   overflow: hidden;
 }
+
 .home-hero-imagem {
   position: absolute;
   inset: 0;

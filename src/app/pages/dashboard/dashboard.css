@@ -46,9 +46,9 @@
   align-items: center;
   justify-content: center;
   padding: var(--space-6);
-  background: linear-gradient(180deg, var(--color-brand-soft), var(--color-surface));
+  background:white;
 }
-.dashboard-vitrine-imagem { max-width: 480px; width: 100%; }
+.dashboard-vitrine-imagem { max-width: 600px; width: 100%; }
 
 .dashboard-tabela-cabecalho {
   display: flex;
