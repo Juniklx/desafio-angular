@@ -1,0 +1,63 @@
+<div class="login-tela">
+  <section class="login-visual" aria-hidden="true">
+    <img src="ranger.png" alt="" />
+    <div class="login-visual-texto">
+      <span>Sistema de frota Ford</span>
+      <h2>Gestão inteligente para uma frota sempre em movimento.</h2>
+    </div>
+  </section>
+
+  <section class="login-painel">
+    <div class="login-caixa">
+      <div class="login-marca">
+        <img src="ford.png" alt="Ford" />
+        <span>Painel de Frota</span>
+      </div>
+
+      <h1>Boas-vindas</h1>
+      <p>Entre com suas credenciais para acessar o painel.</p>
+
+      <form class="login-formulario" (ngSubmit)="login()">
+        <div class="campo">
+          <label for="nome" class="visually-hidden">Usuário</label>
+          <div class="campo-input">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="8" r="3.5" />
+              <path d="M5 20c0-3.5 3-6 7-6s7 2.5 7 6" />
+            </svg>
+            <input
+              type="text"
+              id="nome"
+              [(ngModel)]="usuario.nome"
+              name="nome"
+              placeholder="Digite seu usuário"
+              autocomplete="username"
+              required
+            />
+          </div>
+        </div>
+
+        <div class="campo">
+          <label for="senha" class="visually-hidden">Senha</label>
+          <div class="campo-input">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="5" y="10.5" width="14" height="9" rx="2" />
+              <path d="M8 10.5V7.5a4 4 0 0 1 8 0v3" />
+            </svg>
+            <input
+              type="password"
+              id="senha"
+              [(ngModel)]="usuario.senha"
+              name="senha"
+              placeholder="Digite sua senha"
+              autocomplete="current-password"
+              required
+            />
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-primario">Entrar</button>
+      </form>
+    </div>
+  </section>
+</div>

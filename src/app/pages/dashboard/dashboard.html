@@ -1,0 +1,128 @@
+<div class="app-shell">
+  <input type="checkbox" id="menu-toggle" class="menu-toggle-input visually-hidden" aria-label="Abrir menu" />
+
+  <aside class="sidebar">
+    <div class="sidebar-marca">
+      <img src="ford.png" alt="Ford" />
+      <span>Painel de Frota</span>
+    </div>
+    <nav class="sidebar-nav" aria-label="Navegação principal">
+      <a routerLink="/home" class="sidebar-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M4 11.5 12 4l8 7.5" />
+          <path d="M6 10v9a1 1 0 0 0 1 1h3.5v-5h3v5H17a1 1 0 0 0 1-1v-9" />
+        </svg>
+        Home
+      </a>
+      <a routerLink="/dashboard" class="sidebar-link" aria-current="page">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="4" y="4" width="7" height="7" rx="1.5" />
+          <rect x="13" y="4" width="7" height="7" rx="1.5" />
+          <rect x="4" y="13" width="7" height="7" rx="1.5" />
+          <rect x="13" y="13" width="7" height="7" rx="1.5" />
+        </svg>
+        Dashboard
+      </a>
+    </nav>
+    <a routerLink="/login" class="sidebar-link sidebar-link--sair">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M9 4H6a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h3" />
+        <path d="M15 8l4 4-4 4" />
+        <path d="M19 12H9" />
+      </svg>
+      Sair
+    </a>
+  </aside>
+
+  <label for="menu-toggle" class="menu-overlay" aria-hidden="true"></label>
+
+  <div class="area-principal">
+    <header class="topo">
+      <label for="menu-toggle" class="botao-hamburguer" aria-label="Abrir menu">
+        <span class="botao-hamburguer-barra"></span>
+        <span class="botao-hamburguer-barra"></span>
+        <span class="botao-hamburguer-barra"></span>
+      </label>
+      <span class="topo-titulo">Dashboard</span>
+    </header>
+
+    <main class="dashboard-conteudo">
+      <section class="cartao dashboard-selecao">
+        <div class="campo">
+          <label for="modelo-veiculo">Modelo do veículo</label>
+          <div class="campo-input">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 16.5 5.5 11a2 2 0 0 1 1.9-1.4h9.2a2 2 0 0 1 1.9 1.4L20 16.5" />
+              <rect x="3" y="16.5" width="18" height="4" rx="1.5" />
+              <circle cx="7.5" cy="20.5" r="1.3" />
+              <circle cx="16.5" cy="20.5" r="1.3" />
+            </svg>
+            <select id="modelo-veiculo" name="modelo-veiculo">
+              <option value="ranger">Ranger</option>
+              <option value="mustang" selected>Mustang</option>
+              <option value="territory">Territory</option>
+              <option value="bronco-sport">Bronco Sport</option>
+            </select>
+          </div>
+        </div>
+      </section>
+
+      <section class="metricas" aria-label="Métricas da frota">
+        <article class="cartao metrica-cartao">
+          <p class="metrica-rotulo">Total de vendas</p>
+          <p class="metrica-valor">1.500</p>
+        </article>
+        <article class="cartao metrica-cartao">
+          <p class="metrica-rotulo">Conectados</p>
+          <p class="metrica-valor">500</p>
+        </article>
+        <article class="cartao metrica-cartao">
+          <p class="metrica-rotulo">Update de software</p>
+          <p class="metrica-valor">750</p>
+        </article>
+      </section>
+
+      <section class="cartao dashboard-vitrine">
+        <img src="mustang.png" alt="Ford Mustang" class="dashboard-vitrine-imagem" />
+      </section>
+
+      <section class="cartao dashboard-tabela">
+        <div class="dashboard-tabela-cabecalho">
+          <h2>Telemetria por veículo</h2>
+          <div class="campo-input campo-input--busca">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="10.5" cy="10.5" r="6.5" />
+              <path d="M20 20l-4.3-4.3" />
+            </svg>
+            <input type="search" name="busca-vin" placeholder="Buscar por código (VIN)" aria-label="Buscar por código do veículo" />
+          </div>
+        </div>
+
+        <div class="tabela-wrapper">
+          <table class="tabela-frota">
+            <thead>
+              <tr>
+                <th scope="col">Código (VIN)</th>
+                <th scope="col">Odômetro</th>
+                <th scope="col">Nível de combustível</th>
+                <th scope="col">Status</th>
+                <th scope="col">Lat.</th>
+                <th scope="col">Long.</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>2FRHDUYS2Y63NHD22454</td>
+                <td>8.000 km</td>
+                <td>90%</td>
+                <td><span class="status-pill status-pill--online">On</span></td>
+                <td>-12.2202</td>
+                <td>-38.2314</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+  </div>
+</div>
