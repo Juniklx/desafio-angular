@@ -1,25 +1,29 @@
 .login-tela {
-  min-height: 100vh;
+  height: 100vh;
   display: grid;
   grid-template-columns: 1.1fr 1fr;
 }
 
 .login-visual {
+  display: flex;
   position: relative;
-  overflow: hidden;
+  flex-direction: column;
+  justify-content: center;
   background: var(--color-ink);
 }
+
 .login-visual img {
   width: 100%;
-  height: 100%;
   object-fit: cover;
 }
+
 .login-visual::after {
   content: '';
   position: absolute;
   inset: 0;
   background: linear-gradient(160deg, rgba(10, 18, 38, 0.15) 0%, rgba(10, 18, 38, 0.9) 100%);
 }
+
 .login-visual-texto {
   position: absolute;
   left: var(--space-6);
@@ -28,11 +32,18 @@
   z-index: 1;
   color: #fff;
 }
+
+.login-visual-foto {
+  justify-content: center;
+  align-items: center;
+}
+
 .login-visual-texto span {
   font-family: var(--font-mono);
   font-size: var(--text-xs);
   color: rgba(255, 255, 255, 0.7);
 }
+
 .login-visual-texto h2 {
   color: #fff;
   font-size: var(--text-xl);
@@ -46,21 +57,65 @@
   justify-content: center;
   padding: var(--space-6);
   background: var(--color-surface);
+  overflow: hidden;
 }
-.login-caixa { width: 100%; max-width: 360px; }
 
-.login-marca { display: flex; align-items: center; gap: var(--space-3); margin-bottom: var(--space-6); }
-.login-marca img { width: 44px; }
-.login-marca span { font-family: var(--font-display); font-weight: 700; font-size: var(--text-md); color: var(--color-text); }
+.login-caixa {
+  width: 100%;
+  max-width: 360px;
+}
 
-.login-caixa h1 { font-size: var(--text-xl); margin-bottom: var(--space-2); }
-.login-caixa > p { color: var(--color-text-muted); font-size: var(--text-sm); margin-bottom: var(--space-6); }
+.login-marca {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-3);
+  margin-bottom: var(--space-6);
+}
 
-.login-formulario { display: flex; flex-direction: column; gap: var(--space-4); }
-.login-formulario .btn { width: 100%; margin-top: var(--space-2); }
+.login-marca img {
+  width: 190px;
+}
+
+.login-marca span {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: var(--text-md);
+  color: var(--color-text);
+}
+
+.login-caixa h1 {
+  font-size: var(--text-xl);
+  margin-bottom: var(--space-2);
+}
+
+.login-caixa>p {
+  color: var(--color-text-muted);
+  font-size: var(--text-sm);
+  margin-bottom: var(--space-6);
+}
+
+.login-formulario {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.login-formulario .btn {
+  width: 100%;
+  margin-top: var(--space-2);
+}
 
 @media (max-width: 860px) {
-  .login-tela { grid-template-columns: 1fr; }
-  .login-visual { display: none; }
-  .login-painel { padding: var(--space-5); }
+  .login-tela {
+    grid-template-columns: 1fr;
+  }
+
+  .login-visual {
+    display: none;
+  }
+
+  .login-painel {
+    padding: var(--space-5);
+  }
 }
