@@ -1,4 +1,4 @@
-import { Component, OnInit, signal } from '@angular/core';
+import { Component, OnInit, signal, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { Subject, of } from 'rxjs';
@@ -6,6 +6,7 @@ import { debounceTime, distinctUntilChanged, filter, map, pluck, switchMap, catc
 import { Sidebar } from '../../components/sidebar/sidebar';
 import { Frota } from '../../services/frota';
 import { Veiculo, DadoVeiculo } from '../../models/veiculo.model';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-dashboard',
@@ -15,6 +16,10 @@ import { Veiculo, DadoVeiculo } from '../../models/veiculo.model';
 })
 
 export class Dashboard implements OnInit {
+  private titleService = inject(Title);
+
+  
+
   veiculos = signal<Veiculo[]>([]);
   modeloSelecionado = signal<Veiculo | null>(null);
 
@@ -27,6 +32,8 @@ export class Dashboard implements OnInit {
   constructor(private frota: Frota) {}
 
   ngOnInit() {
+    this.titleService.setTitle('Painel - Dashboard')
+
     this.frota.listarVeiculos().subscribe((lista) => {
       this.veiculos.set(lista);
       if (lista.length) this.selecionarModelo(lista[0]);
