@@ -4,10 +4,9 @@
 
 /* =============== Sidebar (menu lateral) =============== */
 .sidebar {
-    position: absolute;
-    top: 0;
-    height: 100vh;
+    position: fixed;
     width: var(--sidebar-width);
+    min-height: 100vh;
     flex-shrink: 0;
     background: var(--color-sidebar-bg);
     color: var(--color-sidebar-text);
