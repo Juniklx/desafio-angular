@@ -1,8 +1,7 @@
 import { Component, OnInit, signal, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterLink } from '@angular/router';
 import { Subject, of } from 'rxjs';
-import { debounceTime, distinctUntilChanged, filter, map, pluck, switchMap, catchError } from 'rxjs/operators';
+import { debounceTime, distinctUntilChanged, filter, map, switchMap, catchError } from 'rxjs/operators';
 import { Sidebar } from '../../components/sidebar/sidebar';
 import { Frota } from '../../services/frota';
 import { Veiculo, DadoVeiculo } from '../../models/veiculo.model';
@@ -10,15 +9,12 @@ import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-dashboard',
-  imports: [CommonModule, RouterLink, Sidebar],
+  imports: [CommonModule, Sidebar],
   templateUrl: './dashboard.html',
   styleUrl: './dashboard.css',
 })
-
 export class Dashboard implements OnInit {
   private titleService = inject(Title);
-
-  
 
   veiculos = signal<Veiculo[]>([]);
   modeloSelecionado = signal<Veiculo | null>(null);
@@ -32,7 +28,7 @@ export class Dashboard implements OnInit {
   constructor(private frota: Frota) {}
 
   ngOnInit() {
-    this.titleService.setTitle('Painel - Dashboard')
+    this.titleService.setTitle('Painel - Dashboard');
 
     this.frota.listarVeiculos().subscribe((lista) => {
       this.veiculos.set(lista);
@@ -52,9 +48,9 @@ export class Dashboard implements OnInit {
             catchError(() => {
               this.buscaSemResultado.set(true);
               return of(null);
-            })
+            }),
           );
-        })
+        }),
       )
       .subscribe((dado) => {
         this.buscaSemResultado.set(!dado);
