@@ -1,0 +1,164 @@
+.login-tela {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  background: #f3f6fb;
+}
+
+.login-visual {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: white;
+  overflow: hidden;
+}
+
+.login-visual-foto {
+  position: relative;
+  z-index: 1;
+  width: min(90%, 800px);
+  filter: drop-shadow(0 26px 50px rgba(0, 0, 0, 0.274));
+}
+
+.login-visual img {
+  width: 100%;
+  object-fit: cover;
+}
+
+.login-painel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2.5rem;
+  background: var(--color-bg);
+  filter: drop-shadow(0 26px 50px rgba(0, 0, 0, 0.25));
+}
+
+.login-caixa {
+  min-width: 450px;
+  background: #ffffff;
+  border: 1px solid #e6ebf3;
+  border-radius: 24px;
+  padding: 2rem 1.75rem;
+  box-shadow: 0 18px 45px rgba(15, 23, 42, 0.24);
+}
+
+.login-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.4rem 0.8rem;
+  border-radius: 999px;
+  background: #e8eefb;
+  color: var(--color-brand);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 1.25rem;
+}
+
+.login-marca {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.25rem;
+}
+
+.login-marca img {
+  width: 170px;
+  opacity: 0.96;
+}
+
+.login-caixa h1 {
+  font-size: clamp(2rem, 3vw, 2.5rem);
+  margin-bottom: 0.5rem;
+  color: #111827;
+}
+
+.login-caixa > p {
+  color: var(--color-text-muted);
+  font-size: 0.96rem;
+  margin-bottom: 1.75rem;
+}
+
+.login-formulario {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+}
+
+.campo-input {
+  position: relative;
+  display: flex;
+  align-items: center;
+  background: #f8fafc;
+  border: 1px solid #dfe6f1;
+  border-radius: 14px;
+  transition: all 0.2s ease;
+}
+
+.campo-input:focus-within {
+  border-color: var(--color-brand);
+  box-shadow: 0 0 0 4px rgba(11, 61, 145, 0.12);
+  background: #ffffff;
+}
+
+.campo-input svg {
+  position: absolute;
+  left: 1rem;
+  width: 18px;
+  height: 18px;
+  color: #52607a;
+  pointer-events: none;
+}
+
+.campo-input input {
+  width: 100%;
+  height: 52px;
+  border: none;
+  background: transparent;
+  border-radius: 14px;
+  color: var(--color-text);
+  padding: 0.75rem 1rem 0.75rem 3rem;
+  transition: background-color 0.2s ease;
+}
+
+.campo-input input::placeholder {
+  color: var(--color-text-muted);
+}
+
+.campo-input input:focus {
+  outline: none;
+}
+
+.login-formulario .btn {
+  width: 100%;
+  margin-top: 0.25rem;
+  min-height: 52px;
+  border-radius: 14px;
+  box-shadow: 0 12px 24px rgba(11, 61, 145, 0.16);
+}
+
+@media (max-width: 860px) {
+  .login-tela {
+    grid-template-columns: 1fr;
+  }
+
+  .login-visual {
+    display: none;
+  }
+
+  .login-caixa {
+    background: rgba(255, 255, 255, 0.848);
+    backdrop-filter: blur(5px);
+  }
+
+  .login-painel {
+    padding: 1.5rem;
+    background-image: url(../../../../../public/img/ranger.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 110%;
+  }
+}

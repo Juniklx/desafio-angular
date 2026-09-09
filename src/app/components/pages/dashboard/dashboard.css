@@ -131,9 +131,13 @@ table.tabela-frota {
   color: var(--color-danger);
 }
 
-@media (max-width: 720px) {
+@media (max-width: 480px) {
   .dashboard-conteudo {
     padding: var(--space-4);
+  }
+
+  .dashboard-selecao {
+    max-width: 100%;
   }
 
   .dashboard-tabela-cabecalho {
