@@ -11,7 +11,7 @@ export class Auth {
 
   constructor(private http: HttpClient) {}
   
-  private logado = signal(localStorage.getItem('logado') === 'true');
+  private logado = signal(sessionStorage.getItem('logado') === 'true');
 
   estaLogado(): boolean {
     return this.logado();
@@ -21,13 +21,13 @@ export class Auth {
     return this.http.post<Usuario>(`${this.apiUrl}/login`, usuario).pipe(
       tap(() => {
         this.logado.set(true);
-        localStorage.setItem('logado', 'true');
+        sessionStorage.setItem('logado', 'true');
       })
     );
   }
 
   logout() {
     this.logado.set(false);
-    localStorage.removeItem('logado');
+    sessionStorage.removeItem('logado');
   }
 }
