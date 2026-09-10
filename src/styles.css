@@ -1,36 +1,19 @@
-/* =========================================================
-   PAINEL DE FROTA FORD — DESIGN SYSTEM GLOBAL
-   Tokens (cores, tipografia, espaçamento, raio) + reset +
-   apenas o que é reaproveitado por 2+ componentes: botões,
-   campos de formulário, e o shell/topbar (usado por home e
-   dashboard). O mecanismo de abrir/fechar o menu via :has()
-   também fica aqui porque cruza o <app-sidebar> com as
-   páginas — não pode viver no CSS de um único componente.
-   ========================================================= */
-
 @import url('https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&display=swap');
 
 :root {
-  /* --- Cor ------------------------------------------------ */
   --color-ink: #0A1226;
-  /* navy quase-preto, base de textos fortes */
   --color-brand: #0B3D91;
-  /* azul Ford, ações primárias */
   --color-brand-hover: #144DB0;
   --color-brand-soft: #E8EEFB;
-  /* fundo suave para estados de foco/realce */
 
   --color-bg: #F5F7FA;
-  /* fundo da área de conteúdo (claro) */
   --color-surface: #FFFFFF;
-  /* cartões, painéis */
   --color-border: #E1E5EE;
 
   --color-text: #151C31;
   --color-text-muted: #626C82;
 
   --color-sidebar-bg: #0A1226;
-  /* sidebar escura, fixa em todas as telas internas */
   --color-sidebar-text: #A6AFC7;
   --color-sidebar-text-active: #FFFFFF;
   --color-sidebar-hover-bg: rgba(255, 255, 255, 0.08);
@@ -40,13 +23,9 @@
   --color-danger: #D64545;
   --color-danger-soft: #FBEAEA;
 
-  /* --- Tipografia ------------------------------------------ */
   --font-display: 'Sora', 'Segoe UI', sans-serif;
-  /* títulos */
   --font-body: 'Inter', 'Segoe UI', sans-serif;
-  /* texto/UI */
   --font-mono: 'IBM Plex Mono', 'Courier New', monospace;
-  /* dados/códigos */
 
   --text-xs: 0.75rem;
   --text-sm: 0.875rem;
@@ -56,7 +35,6 @@
   --text-xl: 1.75rem;
   --text-2xl: 2.25rem;
 
-  /* --- Espaçamento (base 4px) ------------------------------ */
   --space-1: 0.25rem;
   --space-2: 0.5rem;
   --space-3: 0.75rem;
@@ -66,22 +44,18 @@
   --space-7: 3rem;
   --space-8: 4rem;
 
-  /* --- Raio de borda ---------------------------------------- */
   --radius-sm: 6px;
   --radius-md: 10px;
   --radius-lg: 18px;
   --radius-pill: 999px;
 
-  /* --- Sombra (usada com moderação) -------------------------- */
   --shadow-card: 0 1px 2px rgba(16, 24, 48, 0.04), 0 8px 24px rgba(16, 24, 48, 0.06);
   --shadow-sidebar: 4px 0 24px rgba(0, 0, 0, 0.18);
 
-  /* --- Layout -------------------------------------------------- */
   --sidebar-width: 248px;
   --topbar-height: 64px;
 }
 
-/* --- Reset básico ------------------------------------------- */
 *,
 *::before,
 *::after {
@@ -144,18 +118,6 @@ ul {
   outline-offset: 2px;
 }
 
-@media (prefers-reduced-motion: reduce) {
-
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
-  }
-}
-
 .visually-hidden {
   position: absolute;
   width: 1px;
@@ -168,7 +130,6 @@ ul {
   border: 0;
 }
 
-/* =============== Botões =============== */
 .btn {
   display: inline-flex;
   align-items: center;
@@ -207,7 +168,6 @@ ul {
   background: var(--color-brand-soft);
 }
 
-/* =============== Campos de formulário =============== */
 .campo {
   display: flex;
   flex-direction: column;
@@ -258,7 +218,6 @@ ul {
   background: var(--color-surface);
 }
 
-/* =============== Shell (sidebar + topbar), reaproveitado por home e dashboard =============== */
 .app-shell {
   height: 100vh;
   display: flex;
@@ -272,44 +231,6 @@ ul {
   flex-direction: column;
 }
 
-.topo {
-  height: var(--topbar-height);
-  display: flex;
-  align-items: center;
-  gap: var(--space-4);
-  padding: 0 var(--space-5);
-  background: var(--color-surface);
-  border-bottom: 1px solid var(--color-border);
-  position: sticky;
-  top: 0;
-  z-index: 20;
-  width: 100%;
-}
-
-.topo-titulo {
-  font-family: var(--font-display);
-  font-weight: 600;
-  font-size: var(--text-md);
-}
-
-.botao-hamburguer {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 4px;
-  width: 22px;
-  cursor: pointer;
-}
-
-.botao-hamburguer-barra {
-  display: block;
-  height: 2px;
-  background: var(--color-text);
-  border-radius: 2px;
-  transition: transform .2s ease, opacity .2s ease;
-}
-
-/* Alterna a sidebar via :has() — nenhuma lógica em TS é necessária */
 .app-shell:has(#menu-toggle:checked) .sidebar {
   transform: translateX(0);
   box-shadow: var(--shadow-sidebar);

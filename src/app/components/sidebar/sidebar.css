@@ -2,7 +2,6 @@
     display: contents;
 }
 
-/* =============== Sidebar (menu lateral) =============== */
 .sidebar {
     position: fixed;
     width: var(--sidebar-width);
