@@ -1,4 +1,4 @@
-import { DadoVeiculo, Veiculos, VeiculosAPI } from './../models/veiculo.model';
+import { VeiculosAPI, DadoVeiculo } from './../models/veiculo.model';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
@@ -13,9 +13,9 @@ export class Frota {
 
   constructor(private http: HttpClient) {}
 
-  listarVeiculos(): Observable<Veiculos> {
+  listarVeiculos(): Observable<VeiculosAPI> {
     return this.http
-    .get<Veiculos>(`${this.apiUrl}/vehicles`)
+    .get<VeiculosAPI>(`${this.apiUrl}/vehicles`)
     .pipe(map((resposta: any) => resposta.vehicles));
   }
 

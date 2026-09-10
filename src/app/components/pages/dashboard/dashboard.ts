@@ -4,7 +4,7 @@ import { Subject, of } from 'rxjs';
 import { debounceTime, distinctUntilChanged, filter, map, switchMap, catchError } from 'rxjs/operators';
 import { Sidebar } from '../../sidebar/sidebar';
 import { Frota } from '../../../services/frota';
-import { Veiculo, DadoVeiculo } from '../../../models/veiculo.model';
+import { VeiculoAPI, DadoVeiculo } from '../../../models/veiculo.model';
 import { Title } from '@angular/platform-browser';
 import { Header } from "../../header/header";
 
@@ -17,8 +17,8 @@ import { Header } from "../../header/header";
 export class Dashboard implements OnInit {
   private titleService = inject(Title);
 
-  veiculos = signal<Veiculo[]>([]);
-  modeloSelecionado = signal<Veiculo | null>(null);
+  veiculos = signal<VeiculoAPI[]>([]);
+  modeloSelecionado = signal<VeiculoAPI | null>(null);
 
   vinBuscado = signal('');
   resultadoBusca = signal<DadoVeiculo | null>(null);
@@ -64,7 +64,7 @@ export class Dashboard implements OnInit {
     if (veiculo) this.selecionarModelo(veiculo);
   }
 
-  private selecionarModelo(veiculo: Veiculo) {
+  private selecionarModelo(veiculo: VeiculoAPI) {
     this.modeloSelecionado.set(veiculo);
   }
 
