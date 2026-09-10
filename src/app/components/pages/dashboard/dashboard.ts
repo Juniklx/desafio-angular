@@ -6,10 +6,11 @@ import { Sidebar } from '../../sidebar/sidebar';
 import { Frota } from '../../../services/frota';
 import { Veiculo, DadoVeiculo } from '../../../models/veiculo.model';
 import { Title } from '@angular/platform-browser';
+import { Header } from "../../header/header";
 
 @Component({
   selector: 'app-dashboard',
-  imports: [CommonModule, Sidebar],
+  imports: [CommonModule, Sidebar, Header],
   templateUrl: './dashboard.html',
   styleUrl: './dashboard.css',
 })

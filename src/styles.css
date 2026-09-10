@@ -260,16 +260,16 @@ ul {
 
 /* =============== Shell (sidebar + topbar), reaproveitado por home e dashboard =============== */
 .app-shell {
-  min-height: 100vh;
+  height: 100vh;
   display: flex;
   background: var(--color-bg);
+  flex-direction: column;
 }
 
 .area-principal {
   flex: 1;
   display: flex;
   flex-direction: column;
-  min-width: 0;
 }
 
 .topo {
@@ -283,6 +283,7 @@ ul {
   position: sticky;
   top: 0;
   z-index: 20;
+  width: 100%;
 }
 
 .topo-titulo {

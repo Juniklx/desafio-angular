@@ -1,21 +1,14 @@
 <div class="app-shell">
-  <app-sidebar></app-sidebar>
+  <app-sidebar />
+  <app-header />
   <div class="area-principal">
-    <header class="topo">
-      <label for="menu-toggle" class="botao-hamburguer" aria-label="Abrir menu">
-        <span class="botao-hamburguer-barra"></span>
-        <span class="botao-hamburguer-barra"></span>
-        <span class="botao-hamburguer-barra"></span>
-      </label>
-      <span class="topo-titulo">Home</span>
-    </header>
-
     <main class="home-hero" role="main">
       <img class="home-hero-imagem" src="/img/ranger.png" alt="Ford Ranger" loading="lazy" />
       <div class="home-hero-overlay" aria-hidden="true"></div>
       <div class="home-hero-cartao" aria-labelledby="home-title">
         <h1 id="home-title">Seja bem-vindo(a)!</h1>
-        <p class="home-hero-subtitulo">Acompanhe vendas, conectividade e atualizações de software de toda a frota em um único painel.</p>
+        <p class="home-hero-subtitulo">Acompanhe vendas, conectividade e atualizações de software de toda a frota em um
+          único painel.</p>
         <div class="home-hero-ctas">
           <a routerLink="/dashboard" class="btn btn-primario">Ir para o Dashboard</a>
         </div>
