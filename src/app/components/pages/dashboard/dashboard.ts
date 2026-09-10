@@ -26,7 +26,7 @@ export class Dashboard implements OnInit {
 
   private buscaSubject = new Subject<Event>();
 
-  constructor(private frota: Frota) {}
+  constructor(private frota: Frota) { }
 
   ngOnInit() {
     this.titleService.setTitle('Painel - Dashboard');
