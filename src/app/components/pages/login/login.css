@@ -76,7 +76,7 @@
   color: #111827;
 }
 
-.login-caixa > p {
+.login-caixa>p {
   color: var(--color-text-muted);
   font-size: 0.96rem;
   margin-bottom: 1.75rem;

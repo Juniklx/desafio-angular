@@ -11,12 +11,12 @@ import { map } from 'rxjs/operators';
 export class Frota {
   private apiUrl = 'http://localhost:3001';
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   listarVeiculos(): Observable<VeiculosAPI> {
     return this.http
-    .get<VeiculosAPI>(`${this.apiUrl}/vehicles`)
-    .pipe(map((resposta: any) => resposta.vehicles));
+      .get<VeiculosAPI>(`${this.apiUrl}/vehicles`)
+      .pipe(map((resposta: any) => resposta.vehicles));
   }
 
   buscarDadosVeiculo(vin: string): Observable<DadoVeiculo> {

@@ -9,15 +9,15 @@ import { Observable, tap } from 'rxjs';
 export class Auth {
   private apiUrl = "http://localhost:3001";
 
-  constructor(private http: HttpClient) {}
-  
+  constructor(private http: HttpClient) { }
+
   private logado = signal(sessionStorage.getItem('logado') === 'true');
 
   estaLogado(): boolean {
     return this.logado();
   }
-  
-  login(usuario: Pick <Usuario, 'nome' | 'senha'>):Observable<Usuario> {
+
+  login(usuario: Pick<Usuario, 'nome' | 'senha'>): Observable<Usuario> {
     return this.http.post<Usuario>(`${this.apiUrl}/login`, usuario).pipe(
       tap(() => {
         this.logado.set(true);

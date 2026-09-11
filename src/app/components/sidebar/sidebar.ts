@@ -10,7 +10,7 @@ import { Auth } from '../../services/auth';
   styleUrl: './sidebar.css',
 })
 export class Sidebar {
-  constructor(private auth: Auth, private router: Router) {}
+  constructor(private auth: Auth, private router: Router) { }
 
   sair() {
     this.auth.logout();

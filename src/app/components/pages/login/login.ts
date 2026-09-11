@@ -23,7 +23,7 @@ export class Login implements OnInit {
     senha: ''
   }
 
-  constructor(private auth: Auth, private router:Router) {}
+  constructor(private auth: Auth, private router: Router) { }
 
   login() {
     this.auth.login(this.usuario).subscribe({

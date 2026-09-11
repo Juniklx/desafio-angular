@@ -1,4 +1,4 @@
-export interface VeiculosAPI extends Array<VeiculoAPI> {}
+export interface VeiculosAPI extends Array<VeiculoAPI> { }
 
 export interface VeiculoAPI {
   id: number | string;

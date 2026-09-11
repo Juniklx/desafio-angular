@@ -5,7 +5,7 @@ import { Component } from '@angular/core';
 import { Header } from './header';
 
 @Component({ template: '' })
-class DummyPage {}
+class DummyPage { }
 
 describe('Header', () => {
   let component: Header;
