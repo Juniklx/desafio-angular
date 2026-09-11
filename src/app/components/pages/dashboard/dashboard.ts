@@ -9,8 +9,6 @@ import { Title } from '@angular/platform-browser';
 import { Header } from "../../header/header";
 import { toSignal, takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
-const DEBOUNCE_BUSCA_MS = 400;
-
 function extrairValorInput(event: Event): string {
   return (event.target as HTMLInputElement | null)?.value ?? '';
 }
@@ -48,7 +46,7 @@ export class Dashboard implements OnInit {
     this.buscaSubject
       .pipe(
         map((event: Event) => extrairValorInput(event)),
-        debounceTime(DEBOUNCE_BUSCA_MS),
+        debounceTime(400),
         distinctUntilChanged(),
         map((termo: string) => termo.trim()),
         filter((vin: string) => vin.length > 0),
