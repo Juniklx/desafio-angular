@@ -1,4 +1,4 @@
-import { Component, OnInit, signal, inject } from '@angular/core';
+import { Component, OnInit, signal, inject, DestroyRef, effect } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Subject, of } from 'rxjs';
 import { debounceTime, distinctUntilChanged, filter, map, switchMap, catchError } from 'rxjs/operators';
@@ -7,6 +7,13 @@ import { Frota } from '../../../services/frota';
 import { VeiculoAPI, DadoVeiculo } from '../../../models/veiculo.model';
 import { Title } from '@angular/platform-browser';
 import { Header } from "../../header/header";
+import { toSignal, takeUntilDestroyed } from '@angular/core/rxjs-interop';
+
+const DEBOUNCE_BUSCA_MS = 400;
+
+function extrairValorInput(event: Event): string {
+  return (event.target as HTMLInputElement | null)?.value ?? '';
+}
 
 @Component({
   selector: 'app-dashboard',
@@ -16,42 +23,46 @@ import { Header } from "../../header/header";
 })
 export class Dashboard implements OnInit {
   private titleService = inject(Title);
+  private buscaSubject = new Subject<Event>();
+  private frota = inject(Frota);
+  private destroyRef = inject(DestroyRef);
 
-  veiculos = signal<VeiculoAPI[]>([]);
+  veiculos = toSignal(this.frota.listarVeiculos(), { initialValue: [] });
   modeloSelecionado = signal<VeiculoAPI | null>(null);
-
   vinBuscado = signal('');
   resultadoBusca = signal<DadoVeiculo | null>(null);
   buscaSemResultado = signal(false);
 
-  private buscaSubject = new Subject<Event>();
-
-  constructor(private frota: Frota) { }
+  constructor() {
+    effect(() => {
+      const lista = this.veiculos();
+      if (lista.length > 0 && this.modeloSelecionado() === null) {
+        this.selecionarModelo(lista[0]);
+      }
+    });
+  }
 
   ngOnInit() {
     this.titleService.setTitle('Painel - Dashboard');
 
-    this.frota.listarVeiculos().subscribe((lista) => {
-      this.veiculos.set(lista);
-      if (lista.length) this.selecionarModelo(lista[0]);
-    });
-
     this.buscaSubject
       .pipe(
-        map((event: Event) => (event.target as HTMLInputElement | null)?.value ?? ''),
-        debounceTime(400),
+        map((event: Event) => extrairValorInput(event)),
+        debounceTime(DEBOUNCE_BUSCA_MS),
         distinctUntilChanged(),
         map((termo: string) => termo.trim()),
         filter((vin: string) => vin.length > 0),
         switchMap((vin: string) => {
           this.vinBuscado.set(vin);
           return this.frota.buscarDadosVeiculo(vin).pipe(
-            catchError(() => {
+            catchError((erro) => {
+              console.error('Erro ao buscar veículo:', erro);
               this.buscaSemResultado.set(true);
               return of(null);
             }),
           );
         }),
+        takeUntilDestroyed(this.destroyRef),
       )
       .subscribe((dado) => {
         this.buscaSemResultado.set(!dado);
