@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable, signal } from '@angular/core';
+import { inject, Injectable, signal } from '@angular/core';
 import { Usuario } from '../models/usuario.model';
 import { Observable, tap } from 'rxjs';
 
@@ -9,7 +9,7 @@ import { Observable, tap } from 'rxjs';
 export class Auth {
   private apiUrl = "http://localhost:3001";
 
-  constructor(private http: HttpClient) { }
+  private http = inject(HttpClient);
 
   private logado = signal(sessionStorage.getItem('logado') === 'true');
 
