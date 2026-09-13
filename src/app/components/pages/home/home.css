@@ -53,33 +53,10 @@
   align-items: center;
 }
 
-.btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 10px 16px;
-  border-radius: 10px;
-  text-decoration: none;
-  font-weight: 600;
-  transition: transform 160ms ease, box-shadow 160ms ease;
-}
-
 .btn:focus-visible {
   outline: 3px solid rgba(255, 255, 255, 0.12);
   outline-offset: 2px
 }
-
-.btn-primario {
-  background: linear-gradient(90deg, #0b63ff 0%, #0066d6 100%);
-  color: #fff;
-  box-shadow: 0 6px 18px rgba(11, 99, 255, 0.22);
-}
-
-.btn-primario:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 12px 30px rgba(11, 99, 255, 0.18);
-}
-
 
 @media (max-width: 480px) {
 
