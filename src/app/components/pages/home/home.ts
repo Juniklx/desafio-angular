@@ -1,11 +1,10 @@
 import { Component, OnInit, inject } from '@angular/core';
-import { Sidebar } from '../../../components/sidebar/sidebar';
 import { Title } from '@angular/platform-browser';
-import { Header } from "../../header/header";
+
 
 @Component({
   selector: 'app-home',
-  imports: [Sidebar, Header],
+  imports: [],
   templateUrl: './home.html',
   styleUrl: './home.css',
 })
