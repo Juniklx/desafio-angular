@@ -17,14 +17,14 @@ Aplicação Angular para gestão de frota, com autenticação, visão geral de v
 
 ## Tecnologias utilizadas
 
-| Categoria       | Tecnologia                                                                 |
-| --------------- | --------------------------------------------------------------------------- |
-| Framework       | Angular 20 (standalone components)                                        |
-| Linguagem       | TypeScript 5.9                                                             |
-| Reatividade     | RxJS (`debounceTime`, `distinctUntilChanged`, `filter`, `switchMap`, `map`, `catchError`) e Signals |
-| Estilo          | CSS puro com custom properties (`:root`), sem frameworks de UI            |
-| Testes          | Karma + Jasmine                                                            |
-| Build/CLI       | Angular CLI                                                                |
+| Categoria   | Tecnologia                                                                                          |
+| ----------- | --------------------------------------------------------------------------------------------------- |
+| Framework   | Angular 20 (standalone components)                                                                  |
+| Linguagem   | TypeScript 5.9                                                                                      |
+| Reatividade | RxJS (`debounceTime`, `distinctUntilChanged`, `filter`, `switchMap`, `map`, `catchError`) e Signals |
+| Estilo      | CSS puro com custom properties (`:root`), sem frameworks de UI                                      |
+| Testes      | Karma + Jasmine                                                                                     |
+| Build/CLI   | Angular CLI                                                                                         |
 
 ## Pré-requisitos
 
@@ -36,11 +36,11 @@ Aplicação Angular para gestão de frota, com autenticação, visão geral de v
 
 A aplicação consome uma API REST local, que **não faz parte deste repositório** e precisa ser executada separadamente na porta `3001`. Os endpoints utilizados são:
 
-| Método | Endpoint         | Descrição                          |
-| ------ | ---------------- | ----------------------------------- |
-| POST   | `/login`          | Autentica o usuário                 |
-| GET    | `/vehicles`        | Retorna a lista de veículos da frota |
-| POST   | `/vehicleData`     | Retorna a telemetria de um veículo pelo VIN |
+| Método | Endpoint       | Descrição                                   |
+| ------ | -------------- | ------------------------------------------- |
+| POST   | `/login`       | Autentica o usuário                         |
+| GET    | `/vehicles`    | Retorna a lista de veículos da frota        |
+| POST   | `/vehicleData` | Retorna a telemetria de um veículo pelo VIN |
 
 Sem a API em execução, as telas de login, home e dashboard não conseguirão carregar dados.
 
@@ -83,13 +83,13 @@ src/
 
 ## Scripts disponíveis
 
-| Comando         | Descrição                                              |
-| --------------- | --------------------------------------------------------- |
-| `npm start`      | Sobe a API de apoio e o `ng serve` simultaneamente        |
-| `ng serve`       | Inicia apenas o servidor de desenvolvimento Angular        |
-| `npm run build`  | Gera o build de produção na pasta `dist/`                 |
-| `npm test`       | Executa os testes unitários com Karma/Jasmine              |
-| `npm run watch`  | Gera o build em modo desenvolvimento com watch             |
+| Comando         | Descrição                                           |
+| --------------- | --------------------------------------------------- |
+| `npm start`     | Sobe a API de apoio e o `ng serve` simultaneamente  |
+| `ng serve`      | Inicia apenas o servidor de desenvolvimento Angular |
+| `npm run build` | Gera o build de produção na pasta `dist/`           |
+| `npm test`      | Executa os testes unitários com Karma/Jasmine       |
+| `npm run watch` | Gera o build em modo desenvolvimento com watch      |
 
 ## Autor
 
