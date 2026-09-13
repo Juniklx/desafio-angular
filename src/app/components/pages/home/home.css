@@ -1,12 +1,10 @@
-
-
 .home-hero {
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  height: 100vh;
+  height: 100%;
 }
 
 .home-hero-imagem {
