@@ -5,20 +5,21 @@
     <section class="cartao dashboard-selecao">
       <div class="campo">
         <label for="modelo-veiculo">Modelo do veículo</label>
-        <div class="campo-input">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
-            stroke-linejoin="round">
+        <app-campo-icone>
+          <svg campo-icone-svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+            stroke-linecap="round" stroke-linejoin="round">
             <path d="M4 16.5 5.5 11a2 2 0 0 1 1.9-1.4h9.2a2 2 0 0 1 1.9 1.4L20 16.5" />
             <rect x="3" y="16.5" width="18" height="4" rx="1.5" />
             <circle cx="7.5" cy="20.5" r="1.3" />
             <circle cx="16.5" cy="20.5" r="1.3" />
           </svg>
-          <select id="modelo-veiculo" name="modelo-veiculo" (change)="aoTrocarModelo($any($event.target).value)">
+          <select campo-icone-input id="modelo-veiculo" name="modelo-veiculo"
+            (change)="aoTrocarModelo($any($event.target).value)">
             <option *ngFor="let v of veiculos()" [value]="v.id">
               {{ v.vehicle }}
             </option>
           </select>
-        </div>
+        </app-campo-icone>
       </div>
     </section>
 
@@ -35,15 +36,15 @@
     <section class="cartao dashboard-tabela">
       <div class="dashboard-tabela-cabecalho">
         <h2>Telemetria por veículo</h2>
-        <div class="campo-input campo-input--busca">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
-            stroke-linejoin="round">
+        <app-campo-icone variante="campo-input--busca">
+          <svg campo-icone-svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+            stroke-linecap="round" stroke-linejoin="round">
             <circle cx="10.5" cy="10.5" r="6.5" />
             <path d="M20 20l-4.3-4.3" />
           </svg>
-          <input type="search" name="busca-vin" placeholder="Buscar por código (VIN)"
+          <input campo-icone-input type="search" name="busca-vin" placeholder="Buscar por código (VIN)"
             aria-label="Buscar por código do veículo" (input)="aoDigitarBusca($event)" />
-        </div>
+        </app-campo-icone>
       </div>
 
       <div class="tabela-wrapper">

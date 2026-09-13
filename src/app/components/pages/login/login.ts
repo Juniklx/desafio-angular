@@ -4,10 +4,11 @@ import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Title } from '@angular/platform-browser';
+import { CampoIcone } from '../../campo-icone/campo-icone';
 
 @Component({
   selector: 'app-login',
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, CampoIcone],
   templateUrl: './login.html',
   styleUrl: './login.css',
 })
