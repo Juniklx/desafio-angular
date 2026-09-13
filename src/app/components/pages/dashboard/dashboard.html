@@ -23,18 +23,9 @@
     </section>
 
     <section class="metricas" aria-label="Métricas da frota">
-      <article class="cartao metrica-cartao">
-        <p class="metrica-rotulo">Total de vendas</p>
-        <p class="metrica-valor">{{ modeloSelecionado()?.volumetotal }}</p>
-      </article>
-      <article class="cartao metrica-cartao">
-        <p class="metrica-rotulo">Conectados</p>
-        <p class="metrica-valor">{{ modeloSelecionado()?.connected }}</p>
-      </article>
-      <article class="cartao metrica-cartao">
-        <p class="metrica-rotulo">Update de software</p>
-        <p class="metrica-valor">{{ modeloSelecionado()?.softwareUpdates }}</p>
-      </article>
+      <app-metrica-cartao rotulo="Total de vendas" [valor]="modeloSelecionado()?.volumetotal ?? 0" />
+      <app-metrica-cartao rotulo="Conectados" [valor]="modeloSelecionado()?.connected ?? 0" />
+      <app-metrica-cartao rotulo="Update de software" [valor]="modeloSelecionado()?.softwareUpdates ?? 0" />
     </section>
 
     <section class="cartao dashboard-vitrine">
