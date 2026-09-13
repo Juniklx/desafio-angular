@@ -37,6 +37,7 @@ yarn-error.log
 testem.log
 /typings
 __screenshots__/
+.github
 
 # System files
 .DS_Store
