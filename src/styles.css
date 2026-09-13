@@ -180,12 +180,6 @@ ul {
   color: var(--color-text-muted);
 }
 
-.campo-input {
-  position: relative;
-  display: flex;
-  align-items: center;
-}
-
 .campo-input app-icone {
   position: absolute;
   left: var(--space-3);
