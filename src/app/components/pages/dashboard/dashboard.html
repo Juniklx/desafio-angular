@@ -4,12 +4,14 @@
       <div class="campo">
         <label for="modelo-veiculo">Modelo do veículo</label>
         <app-campo-icone>
-          <app-icone campo-icone-svg nome="carro"/>
+          <app-icone campo-icone-svg nome="carro" />
           <select campo-icone-input id="modelo-veiculo" name="modelo-veiculo"
             (change)="aoTrocarModelo($any($event.target).value)">
-            <option *ngFor="let v of veiculos()" [value]="v.id">
+            @for (v of veiculos(); track v.id) {
+            <option [value]="v.id">
               {{ v.vehicle }}
             </option>
+            }
           </select>
         </app-campo-icone>
       </div>
@@ -29,7 +31,7 @@
       <div class="dashboard-tabela-cabecalho">
         <h2>Telemetria por veículo</h2>
         <app-campo-icone variante="campo-input--busca">
-          <app-icone campo-icone-svg nome="busca"/>
+          <app-icone campo-icone-svg nome="busca" />
           <input campo-icone-input type="search" name="busca-vin" placeholder="Buscar por código (VIN)"
             aria-label="Buscar por código do veículo" (input)="aoDigitarBusca($event)" />
         </app-campo-icone>
@@ -48,7 +50,8 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngIf="resultadoBusca() as dado">
+            @if (resultadoBusca(); as dado) {
+            <tr>
               <td>{{ vinBuscado() }}</td>
               <td>{{ dado.odometro }} km</td>
               <td>{{ dado.nivelCombustivel }}%</td>
@@ -60,9 +63,12 @@
               <td>{{ dado.lat }}</td>
               <td>{{ dado.long }}</td>
             </tr>
-            <tr *ngIf="buscaSemResultado()">
+            }
+            @if (buscaSemResultado()) {
+            <tr>
               <td colspan="6">Nenhum veículo encontrado com esse código.</td>
             </tr>
+            }
           </tbody>
         </table>
       </div>
