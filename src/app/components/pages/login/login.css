@@ -104,7 +104,7 @@
   background: #ffffff;
 }
 
-.campo-input svg {
+.campo-input app-icone {
   position: absolute;
   left: 1rem;
   width: 18px;

@@ -20,11 +20,7 @@
         <div class="campo">
           <label for="nome" class="visually-hidden">Usuário</label>
           <app-campo-icone>
-            <svg campo-icone-svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
-              stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="12" cy="8" r="3.5" />
-              <path d="M5 20c0-3.5 3-6 7-6s7 2.5 7 6" />
-            </svg>
+            <app-icone campo-icone-svg nome="usuario" />
             <input campo-icone-input type="text" id="nome" [(ngModel)]="usuario.nome" name="nome"
               placeholder="Digite seu usuário" autocomplete="username" required />
           </app-campo-icone>
@@ -33,11 +29,7 @@
         <div class="campo">
           <label for="senha" class="visually-hidden">Senha</label>
           <app-campo-icone>
-            <svg campo-icone-svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
-              stroke-linejoin="round">
-              <rect x="5" y="10.5" width="14" height="9" rx="2" />
-              <path d="M8 10.5V7.5a4 4 0 0 1 8 0v3" />
-            </svg>
+            <app-icone campo-icone-input nome="senha" />
             <input campo-icone-input type="password" id="senha" [(ngModel)]="usuario.senha" name="senha" placeholder="Digite sua senha"
               autocomplete="current-password" required />
           </app-campo-icone>

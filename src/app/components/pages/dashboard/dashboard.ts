@@ -10,6 +10,7 @@ import { Header } from "../../header/header";
 import { toSignal, takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { MetricaCartao } from '../../metrica-cartao/metrica-cartao';
 import { CampoIcone } from '../../campo-icone/campo-icone';
+import { Icone } from '../../icone/icone';
 
 function extrairValorInput(event: Event): string {
   return (event.target as HTMLInputElement | null)?.value ?? '';
@@ -17,7 +18,7 @@ function extrairValorInput(event: Event): string {
 
 @Component({
   selector: 'app-dashboard',
-  imports: [CommonModule, Sidebar, Header, MetricaCartao, CampoIcone],
+  imports: [CommonModule, Sidebar, Header, MetricaCartao, CampoIcone, Icone],
   templateUrl: './dashboard.html',
   styleUrl: './dashboard.css',
 })

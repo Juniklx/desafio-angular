@@ -186,7 +186,7 @@ ul {
   align-items: center;
 }
 
-.campo-input svg {
+.campo-input app-icone {
   position: absolute;
   left: var(--space-3);
   width: 18px;
