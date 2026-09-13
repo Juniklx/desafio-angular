@@ -30,11 +30,13 @@
           <label for="senha" class="visually-hidden">Senha</label>
           <app-campo-icone>
             <app-icone campo-icone-svg nome="senha" />
-            <input campo-icone-input type="password" id="senha" [(ngModel)]="usuario.senha" name="senha" placeholder="Digite sua senha"
-              autocomplete="current-password" required />
+            <input campo-icone-input type="password" id="senha" [(ngModel)]="usuario.senha" name="senha"
+              placeholder="Digite sua senha" autocomplete="current-password" required />
           </app-campo-icone>
         </div>
-
+        @if (erroLogin()) {
+        <p class="login-erro" role="alert">{{ erroLogin() }}</p>
+        }
         <button type="submit" class="btn btn-primario">Entrar</button>
       </form>
     </div>

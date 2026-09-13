@@ -2,11 +2,9 @@ import { Component, OnInit, signal, inject, DestroyRef, effect } from '@angular/
 import { CommonModule } from '@angular/common';
 import { Subject, of } from 'rxjs';
 import { debounceTime, distinctUntilChanged, filter, map, switchMap, catchError } from 'rxjs/operators';
-import { Sidebar } from '../../sidebar/sidebar';
 import { Frota } from '../../../services/frota';
 import { VeiculoAPI, DadoVeiculo } from '../../../models/veiculo.model';
 import { Title } from '@angular/platform-browser';
-import { Header } from "../../header/header";
 import { toSignal, takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { MetricaCartao } from '../../metrica-cartao/metrica-cartao';
 import { CampoIcone } from '../../campo-icone/campo-icone';
@@ -18,7 +16,7 @@ function extrairValorInput(event: Event): string {
 
 @Component({
   selector: 'app-dashboard',
-  imports: [CommonModule, Sidebar, Header, MetricaCartao, CampoIcone, Icone],
+  imports: [CommonModule, MetricaCartao, CampoIcone, Icone],
   templateUrl: './dashboard.html',
   styleUrl: './dashboard.css',
 })

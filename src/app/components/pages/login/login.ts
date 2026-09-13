@@ -1,4 +1,4 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, OnInit, inject, signal } from '@angular/core';
 import { Auth } from '../../../services/auth';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
@@ -24,16 +24,20 @@ export class Login implements OnInit {
     nome: '',
     senha: ''
   }
+  erroLogin = signal<string | null>(null);
 
   constructor(private auth: Auth, private router: Router) { }
 
   login() {
+    this.erroLogin.set(null);
+
     this.auth.login(this.usuario).subscribe({
-      next: (response) => {
+      next: () => {
         this.router.navigate(['/home']);
       },
       error: (err) => {
         console.error('Erro ao fazer login:', err);
+        this.erroLogin.set('Usuário ou senha inválidos.');
       }
     })
   }

@@ -140,6 +140,12 @@
   box-shadow: 0 12px 24px rgba(11, 61, 145, 0.16);
 }
 
+.login-erro {
+    color: #d32f2f;
+    font-size: 0.875rem;
+    margin: 0.5rem 0 0;
+  }
+
 @media (max-width: 860px) {
   .login-tela {
     grid-template-columns: 1fr;
