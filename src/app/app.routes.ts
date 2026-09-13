@@ -8,7 +8,7 @@ import { guestGuard } from './guards/guest.guard';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
-  { path: 'login', component: Login, canActivateChild: [guestGuard], data: { title: 'Login' } },
+  { path: 'login', component: Login, canActivate: [guestGuard], data: { title: 'Login' } },
   {
     path: '',
     component: PainelLayout,
