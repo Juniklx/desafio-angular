@@ -7,5 +7,5 @@ import { Component, input } from '@angular/core';
   styleUrl: './icone.css',
 })
 export class Icone {
-  nome = input.required<'usuario' | 'senha' | 'carro' | 'busca'>();
+  nome = input.required<'usuario' | 'senha' | 'carro' | 'busca' | 'fechar'>();
 }
