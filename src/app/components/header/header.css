@@ -10,6 +10,7 @@
   position: relative;
   top: 0;
   z-index: 20;
+  box-shadow: 0 1px 0 rgba(16, 24, 48, 0.02);
 }
 
 .cabecalho-titulo {
@@ -26,6 +27,12 @@
   justify-content: center;
   gap: 7px;
   cursor: pointer;
+  border-radius: var(--radius-sm);
+  transition: background-color .15s ease;
+}
+
+.botao-hamburguer:hover {
+  background: var(--color-brand-soft);
 }
 
 .botao-hamburguer-barra {
@@ -34,4 +41,5 @@
   background: var(--color-text);
   border-radius: 2px;
   transition: transform .2s ease, opacity .2s ease;
+  width: 20px;
 }

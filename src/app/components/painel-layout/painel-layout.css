@@ -1,0 +1,9 @@
+:host {
+  display: block;
+  height: 100dvh;
+}
+
+:host > .app-shell {
+  height: 100%;
+  overflow: hidden;
+}

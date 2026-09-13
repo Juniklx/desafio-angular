@@ -6,10 +6,12 @@
   --color-brand: #0B3D91;
   --color-brand-hover: #144DB0;
   --color-brand-soft: #E8EEFB;
+  --color-brand-bright: #2D73D5;
 
   --color-bg: #F5F7FA;
   --color-surface: #FFFFFF;
   --color-border: #E1E5EE;
+  --color-border-strong: #CBD4E4;
 
   --color-text: #151C31;
   --color-text-muted: #626C82;
@@ -50,7 +52,8 @@
   --radius-lg: 18px;
   --radius-pill: 999px;
 
-  --shadow-card: 0 1px 2px rgba(16, 24, 48, 0.04), 0 8px 24px rgba(16, 24, 48, 0.06);
+  --shadow-card: 0 1px 2px rgba(16, 24, 48, 0.03), 0 12px 28px rgba(16, 24, 48, 0.055);
+  --shadow-card-hover: 0 2px 4px rgba(16, 24, 48, 0.04), 0 16px 34px rgba(16, 24, 48, 0.09);
   --shadow-sidebar: 4px 0 24px rgba(0, 0, 0, 0.18);
 
   --sidebar-width: 248px;
@@ -146,7 +149,7 @@ ul {
   font-size: var(--text-sm);
   border: 1px solid transparent;
   cursor: pointer;
-  transition: background-color .15s ease, transform .1s ease, box-shadow .15s ease;
+  transition: background-color .15s ease, transform .15s ease, box-shadow .15s ease, border-color .15s ease;
 }
 
 .btn-primario {
@@ -156,6 +159,8 @@ ul {
 
 .btn-primario:hover {
   background: var(--color-brand-hover);
+  box-shadow: 0 8px 18px rgba(11, 61, 145, 0.2);
+  transform: translateY(-1px);
 }
 
 .btn-primario:active {
@@ -170,6 +175,7 @@ ul {
 
 .btn-secundario:hover {
   background: var(--color-brand-soft);
+  border-color: var(--color-brand-bright);
 }
 
 /* ===== Campos de formulário ===== */
@@ -224,6 +230,12 @@ ul {
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-card);
   padding: var(--space-5);
+  transition: box-shadow .2s ease, border-color .2s ease;
+}
+
+.cartao:hover {
+  border-color: var(--color-border-strong);
+  box-shadow: var(--shadow-card-hover);
 }
 
 /* ===== Layout (shell) ===== */
@@ -232,6 +244,7 @@ ul {
   display: flex;
   background: var(--color-bg);
   flex-direction: column;
+  overflow: auto;
 }
 
 .area-principal {
@@ -242,6 +255,7 @@ ul {
 
 app-shell {
   height: calc(100dvh - 64px);
+  display: block;
 }
 
 /* ===== Menu mobile (toggle da sidebar) ===== */
