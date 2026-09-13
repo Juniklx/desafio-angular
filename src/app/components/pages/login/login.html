@@ -34,9 +34,7 @@
               placeholder="Digite sua senha" autocomplete="current-password" required />
           </app-campo-icone>
         </div>
-        @if (erroLogin()) {
-        <p class="login-erro" role="alert">{{ erroLogin() }}</p>
-        }
+        <p class="login-erro" role="alert" *ngIf="erroLogin()">{{ erroLogin() }}</p>
         <button type="submit" class="btn btn-primario">Entrar</button>
       </form>
     </div>

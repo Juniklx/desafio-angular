@@ -1,4 +1,5 @@
-import { Component, OnInit, signal, inject, DestroyRef, effect } from '@angular/core'
+import { Component, OnInit, signal, inject, DestroyRef, effect } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { Subject, of } from 'rxjs';
 import { debounceTime, distinctUntilChanged, filter, map, switchMap, catchError } from 'rxjs/operators';
 import { Frota } from '../../../services/frota';
@@ -15,7 +16,7 @@ function extrairValorInput(event: Event): string {
 
 @Component({
   selector: 'app-dashboard',
-  imports: [ MetricaCartao, CampoIcone, Icone],
+  imports: [CommonModule, MetricaCartao, CampoIcone, Icone],
   templateUrl: './dashboard.html',
   styleUrl: './dashboard.css',
 })
