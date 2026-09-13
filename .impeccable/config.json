@@ -1,0 +1,14 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "overused-font",
+        "value": "inter",
+        "createdAt": "2026-09-13T22:38:19.482Z",
+        "reason": "project DESIGN.md and user brief already specify Inter as the body face; this is an intentional design-system choice"
+      }
+    ]
+  }
+}

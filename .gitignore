@@ -38,6 +38,10 @@ testem.log
 /typings
 __screenshots__/
 .github
+.agents
+.gemini
+.claude
+.codex
 
 # System files
 .DS_Store
