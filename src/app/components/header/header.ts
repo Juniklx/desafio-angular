@@ -23,13 +23,13 @@ export class Header {
   }
 
   private atualizarTitulo(): void {
-    let route = this.activatedRoute;
+  let route = this.activatedRoute;
 
-    while (route.firstChild) {
-      route = route.firstChild;
-    }
-
-    const titulo = route.snapshot.data['title'] ?? 'Painel';
-    this.pageTitle.set(titulo);
+  while (route.firstChild) {
+    route = route.firstChild;
   }
+
+  const titulo = route.snapshot?.data?.['title'] ?? 'Painel';
+  this.pageTitle.set(titulo);
+}
 }
