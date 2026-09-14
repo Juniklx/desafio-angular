@@ -9,7 +9,7 @@
 
 .home-hero-imagem {
   position: absolute;
-  width: 100%;
+  width: 80%;
   object-fit: cover;
   object-position: center right;
   filter: saturate(0.95) contrast(0.95);
