@@ -1,6 +1,8 @@
 # Dashboard de Frota Ford
 
-Aplicação Angular para gestão de frota, com autenticação, visão geral de veículos e um dashboard com métricas, vitrine do modelo selecionado e busca de telemetria por VIN. Projeto desenvolvido como desafio individual do curso de Front End (parceria Ford/Senai).
+Aplicação web para consultar indicadores de veículos Ford e telemetria por VIN, desenvolvida como desafio individual do curso de Front End da parceria Ford/SENAI.
+
+O fluxo da aplicação é **Login → Home → Dashboard**. No painel, o usuário seleciona um modelo, acompanha seus indicadores e consulta os dados de um veículo pelo código de identificação (VIN).
 
 ![Angular](https://img.shields.io/badge/Angular-20-DD0031?logo=angular&logoColor=white)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5.9-3178C6?logo=typescript&logoColor=white)
@@ -8,90 +10,145 @@ Aplicação Angular para gestão de frota, com autenticação, visão geral de v
 
 ## Funcionalidades
 
-- Autenticação com proteção de rotas por guards (`authGuard` e `guestGuard`)
-- Listagem de veículos da frota consumida via API
-- Seleção de modelo com atualização reativa de métricas (total de vendas, conectados, updates de software)
-- Vitrine com imagem do veículo selecionado
-- Busca de telemetria por VIN com debounce, filtro e cancelamento de requisições anteriores
-- Layout responsivo com sidebar fixa e design system próprio em CSS custom properties
+- **Login e logout:** autenticação via API, estado de sessão em `sessionStorage` e controle de navegação com `authGuard` e `guestGuard`.
+- **Home:** tela de boas-vindas com destaque visual de veículo.
+- **Indicadores por modelo:** total de vendas, veículos conectados e atualizações de software.
+- **Vitrine de veículos:** imagem atualizada conforme o modelo selecionado.
+- **Consulta por VIN:** odômetro, nível de combustível, status, latitude e longitude.
+- **Busca reativa:** espera de 400 ms após a digitação, descarte de termos vazios e cancelamento de consultas anteriores com RxJS.
+- **Interface responsiva:** navegação lateral, cabeçalho e componentes reutilizáveis, com estilos em CSS puro.
 
-## Tecnologias utilizadas
+## Tecnologias
 
-| Categoria   | Tecnologia                                                                                          |
-| ----------- | --------------------------------------------------------------------------------------------------- |
-| Framework   | Angular 20 (standalone components)                                                                  |
-| Linguagem   | TypeScript 5.9                                                                                      |
-| Reatividade | RxJS (`debounceTime`, `distinctUntilChanged`, `filter`, `switchMap`, `map`, `catchError`) e Signals |
-| Estilo      | CSS puro com custom properties (`:root`), sem frameworks de UI                                      |
-| Testes      | Karma + Jasmine                                                                                     |
-| Build/CLI   | Angular CLI                                                                                         |
+| Área | Tecnologias |
+| --- | --- |
+| Interface | Angular 20.3 e componentes standalone |
+| Linguagem | TypeScript 5.9 |
+| Estado e reatividade | Angular Signals e RxJS 7.8 |
+| Integração | HttpClient e API REST |
+| Estilos | CSS com custom properties |
+| Testes | Jasmine e Karma |
+| Desenvolvimento e build | Angular CLI e concurrently |
 
-## Pré-requisitos
+## Como executar
 
-- [Node.js](https://nodejs.org/) 20 ou superior
-- [Angular CLI](https://angular.dev/tools/cli) 20.x (`npm install -g @angular/cli`)
-- Uma instância da API de apoio rodando localmente (ver seção abaixo)
+### 1. Pré-requisitos
 
-## API
+- Git e npm.
+- Node.js compatível com Angular 20.3: **20.19+ na linha 20, 22.12+ na linha 22 ou 24.x**, conforme a [tabela oficial de compatibilidade](https://angular.dev/reference/versions).
+- API de apoio disponível em `http://localhost:3001`, com credenciais e VINs válidos.
 
-A aplicação consome uma API REST local, que **não faz parte deste repositório** e precisa ser executada separadamente na porta `3001`. Os endpoints utilizados são:
-
-| Método | Endpoint       | Descrição                                   |
-| ------ | -------------- | ------------------------------------------- |
-| POST   | `/login`       | Autentica o usuário                         |
-| GET    | `/vehicles`    | Retorna a lista de veículos da frota        |
-| POST   | `/vehicleData` | Retorna a telemetria de um veículo pelo VIN |
-
-Sem a API em execução, as telas de login, home e dashboard não conseguirão carregar dados.
-
-## Como rodar o projeto
-
-Clone o repositório e instale as dependências:
+### 2. Instalar o front-end
 
 ```bash
 git clone https://github.com/Juniklx/desafio-angular.git
 cd desafio-angular
-npm install
+npm ci
 ```
 
-Com a API de apoio já rodando em `http://localhost:3001`, inicie o servidor de desenvolvimento:
+O Angular CLI já é uma dependência do projeto; os comandos abaixo usam a instalação local.
+
+### 3. Iniciar a aplicação
+
+Com a API de apoio em execução, inicie apenas o front-end:
 
 ```bash
-ng serve
+npx ng serve
 ```
 
-Acesse `http://localhost:4200` no navegador. A aplicação recarrega automaticamente a cada alteração nos arquivos fonte.
+Acesse [http://localhost:4200](http://localhost:4200) e entre com as credenciais fornecidas pela API.
 
-## Estrutura de pastas
+### Inicialização conjunta com a API
 
+O comando `npm start` inicia o Angular e executa `npm run start --prefix .env/Api-Sprint7` em paralelo.
+
+Para utilizá-lo, é necessário colocar previamente a API de apoio em `.env/Api-Sprint7`, instalar suas dependências e garantir que ela tenha um script `start`:
+
+```bash
+npm install --prefix .env/Api-Sprint7
+npm start
 ```
+
+**A API não está incluída neste repositório.** A pasta `.env` é ignorada pelo Git, portanto um clone novo não contém `.env/Api-Sprint7`. Se a API estiver em outro diretório, execute-a separadamente e use `npx ng serve`.
+
+## Integração com a API
+
+URL base: `http://localhost:3001`, definida em [auth.ts](src/app/services/auth.ts) e [frota.ts](src/app/services/frota.ts).
+
+| Método | Endpoint | Entrada | Resposta esperada pelo front-end |
+| --- | --- | --- | --- |
+| POST | `/login` | `{ nome, senha }` | Dados do usuário |
+| GET | `/vehicles` | — | Objeto com a propriedade `vehicles`, contendo a lista de modelos |
+| POST | `/vehicleData` | `{ vin }` | Dados de telemetria do veículo |
+
+Os modelos de dados estão em [src/app/models](src/app/models):
+
+- **Modelo de veículo:** `id`, `vehicle`, `volumetotal`, `connected`, `softwareUpdates` e `img`.
+- **Telemetria:** `id`, `odometro`, `nivelCombustivel`, `status`, `lat` e `long`.
+
+Sem a API, o front-end pode ser iniciado, mas não é possível autenticar nem carregar os dados do dashboard. Credenciais e VINs de exemplo dependem da API utilizada.
+
+## Rotas
+
+| Rota | Tela | Acesso |
+| --- | --- | --- |
+| `/` | Redireciona para o login | — |
+| `/login` | Autenticação | Visitantes, via `guestGuard` |
+| `/home` | Boas-vindas | Sessão autenticada, via `authGuard` |
+| `/dashboard` | Indicadores e telemetria | Sessão autenticada, via `authGuard` |
+
+## Estrutura do projeto
+
+```text
+public/
+├── icons/                    # Logotipo
+└── img/                      # Imagens dos veículos
 src/
 ├── app/
 │   ├── components/
-│   │   ├── header/          # Cabeçalho da aplicação
-│   │   ├── sidebar/          # Menu lateral fixo
+│   │   ├── campo-icone/      # Campo com ícone por projeção de conteúdo
+│   │   ├── header/           # Cabeçalho do painel
+│   │   ├── icone/            # Ícones reutilizáveis
+│   │   ├── metrica-cartao/   # Cartão de indicador
+│   │   ├── painel-layout/   # Layout compartilhado das rotas autenticadas
+│   │   ├── sidebar/          # Navegação lateral
 │   │   └── pages/
-│   │       ├── login/        # Tela de autenticação
-│   │       ├── home/          # Tela inicial
-│   │       └── dashboard/    # Métricas, vitrine e busca por VIN
-│   ├── guards/                # authGuard e guestGuard
-│   ├── models/                 # Interfaces de Usuario e Veiculo
-│   ├── services/               # Auth e Frota (chamadas HTTP)
-│   └── app.routes.ts           # Definição de rotas
-└── styles.css                  # Design system (custom properties)
+│   │       ├── login/
+│   │       ├── home/
+│   │       └── dashboard/
+│   ├── guards/              # Controle de acesso às rotas
+│   ├── models/              # Interfaces de usuário, veículos e telemetria
+│   ├── services/            # Autenticação e consultas à API
+│   ├── app.config.ts
+│   └── app.routes.ts
+└── styles.css               # Estilos globais e tokens visuais
 ```
 
-## Scripts disponíveis
+## Comandos disponíveis
 
-| Comando         | Descrição                                           |
-| --------------- | --------------------------------------------------- |
-| `npm start`     | Sobe a API de apoio e o `ng serve` simultaneamente  |
-| `ng serve`      | Inicia apenas o servidor de desenvolvimento Angular |
-| `npm run build` | Gera o build de produção na pasta `dist/`           |
-| `npm test`      | Executa os testes unitários com Karma/Jasmine       |
-| `npm run watch` | Gera o build em modo desenvolvimento com watch      |
+| Comando | Descrição |
+| --- | --- |
+| `npx ng serve` | Inicia somente o front-end |
+| `npm start` | Inicia front-end e API em `.env/Api-Sprint7` |
+| `npm run build` | Gera o build de produção em `dist/` |
+| `npm run watch` | Recompila em modo de desenvolvimento a cada alteração |
+| `npm test` | Executa os testes com Karma/Jasmine |
+| `npm test -- --watch=false --browsers=ChromeHeadless` | Executa os testes uma vez, sem abrir a interface do navegador |
+
+Os testes com `ChromeHeadless` exigem Chrome instalado no ambiente.
+
+## Escopo do projeto
+
+Projeto educacional voltado à **consulta de dados**. A interface não inclui cadastro ou edição de veículos, gerenciamento de usuários, mapas ou exportação de relatórios.
+
+O controle de sessão no front-end usa uma flag em `sessionStorage`. Os guards controlam a navegação; a autorização dos dados deve ser garantida pela API.
+
+## Documentação complementar
+
+- [PRODUCT.md](PRODUCT.md): contexto de uso, propósito e escopo do produto.
+- [DESIGN.md](DESIGN.md): diretrizes visuais da interface.
 
 ## Autor
 
-Marcelo Soares Teixeira Junior
-[github.com/Juniklx](https://github.com/Juniklx)
+**Marcelo Soares Teixeira Junior**  
+[GitHub · Juniklx](https://github.com/Juniklx)
